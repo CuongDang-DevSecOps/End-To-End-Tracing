@@ -1,9 +1,9 @@
 server:
   shutdown: graceful
-  port: 8011
+  port: 8010
 
 spring:
   main:
     banner-mode: off
   application:
-    name: inventory-service
+    name: order-orchestrator-service
