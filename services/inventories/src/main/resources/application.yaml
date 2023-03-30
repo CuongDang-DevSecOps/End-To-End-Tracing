@@ -1,0 +1,9 @@
+server:
+  shutdown: graceful
+  port: 8012
+
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: inventory-service
