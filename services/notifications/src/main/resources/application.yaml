@@ -1,0 +1,9 @@
+server:
+  shutdown: graceful
+  port: 8013
+
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: notification-service
