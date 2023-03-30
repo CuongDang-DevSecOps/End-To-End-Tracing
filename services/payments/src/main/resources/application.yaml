@@ -1,0 +1,9 @@
+server:
+  shutdown: graceful
+  port: 8010
+
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: payment-service
