@@ -4,6 +4,16 @@
 
 ![Order Processing System Orchestrator](./docs/resources/OrderProcessingOrchestrator.png)
 
+## Telemetry Data Flow
+
+![Telemetry Data Flow](./docs/resources/TelemetryDataFlow.png)
+
+## Sample
+
+### End To End Tracing Sample
+
+![End To End Tracing Sample](./docs/resources/EndToEndTracingSample.png)
+
 ## Set up
 
 ### Open Telemetry Collector
