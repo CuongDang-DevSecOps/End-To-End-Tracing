@@ -4,11 +4,13 @@ echo "[DEBUG] git version $(git version)"
 echo "[DEBUG] docker version: $(docker --version)"
 echo "[DEBUG] maven version: $(mvn --version)"
 
+NAMESPACE="shipment"
 SERVICE_NAME="shipment-service"
 DOCKER_USERNAME=$1
 DOCKER_ACCESS_TOKEN=$2
 DOCKER_HUB_REPOSITORY=$3
 BUILD_VERSION=$4
+HELM_VALUES_PATH=$5
 
 echo "[DEBUG] Checkout java-pipeline-templates"
 git clone https://github.com/CuongDang-DevSecOps/java-pipeline-templates
@@ -29,8 +31,19 @@ sh java-pipeline-templates/ci/docker-push.sh "$SERVICE_NAME" "$DOCKER_USERNAME" 
 
 # CD
 
-## GitOps Pull Request
-sh java-pipeline-templates/cd/gitops-pull-request.sh
+## Render K8S Manifest
+echo "[DEBUG] Checkout helm-chart-templates"
+git clone https://github.com/CuongDang-DevSecOps/helm-chart-templates
+
+sh java-pipeline-templates/cd/k8s-render-manifest.sh "$BUILD_VERSION" "$HELM_VALUES_PATH"
+
+## GitOps Push Changes
+echo "[DEBUG] Checkout git-ops"
+git clone https://github.com/CuongDang-DevSecOps/git-ops
+
+sh java-pipeline-templates/cd/gitops-push-changes.sh "$BUILD_VERSION" "$NAMESPACE" "$SERVICE_NAME"
 
 echo "[DEBUG] Clean Up"
 rm -rf java-pipeline-templates
+rm -rf helm-chart-templates
+rm -rf git-ops
