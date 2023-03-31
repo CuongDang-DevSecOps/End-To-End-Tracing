@@ -4,3 +4,13 @@ appName: order-service
 image:
   repository: cuongdangdevsecops/order-service
   tag: <IMAGE_TAG>
+
+env:
+  - name: INVENTORY_SERVICE_BASE_URL
+    value: 'http://inventory-service.inventory'
+  - name: PAYMENT_SERVICE_BASE_URL
+    value: 'http://payment-service.payment'
+  - name: SHIPMENT_SERVICE_BASE_URL
+    value: 'http://shipment-service.shipment'
+  - name: NOTIFICATION_SERVICE_BASE_URL
+    value: 'http://notification-service.notification'
