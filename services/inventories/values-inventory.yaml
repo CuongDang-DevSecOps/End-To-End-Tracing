@@ -1,0 +1,6 @@
+namespace: inventory
+appName: inventory-service
+
+image:
+  repository: cuongdangdevsecops/inventory-service
+  tag: <IMAGE_TAG>
