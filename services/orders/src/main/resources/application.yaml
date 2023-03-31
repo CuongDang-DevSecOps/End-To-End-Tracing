@@ -1,9 +1,14 @@
 server:
   shutdown: graceful
-  port: 8010
 
 spring:
   main:
     banner-mode: off
   application:
     name: order-orchestrator-service
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
