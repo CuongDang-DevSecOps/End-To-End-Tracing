@@ -1,9 +1,14 @@
 server:
   shutdown: graceful
-  port: 8014
 
 spring:
   main:
     banner-mode: off
   application:
     name: notification-service
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
