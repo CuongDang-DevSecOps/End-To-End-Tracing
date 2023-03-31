@@ -1,0 +1,6 @@
+namespace: order
+appName: order-service
+
+image:
+  repository: cuongdangdevsecops/order-service
+  tag: <IMAGE_TAG>
