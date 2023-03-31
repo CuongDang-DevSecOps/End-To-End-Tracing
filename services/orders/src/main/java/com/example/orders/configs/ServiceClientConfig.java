@@ -4,6 +4,10 @@ import com.example.orders.clients.InventoryServiceClient;
 import com.example.orders.clients.NotificationServiceClient;
 import com.example.orders.clients.PaymentServiceClient;
 import com.example.orders.clients.ShipmentServiceClient;
+import com.example.orders.configs.properties.InventoryServiceProperties;
+import com.example.orders.configs.properties.NotificationServiceProperties;
+import com.example.orders.configs.properties.PaymentServiceProperties;
+import com.example.orders.configs.properties.ShipmentServiceProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -14,10 +18,10 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 public class ServiceClientConfig {
 
     @Bean
-    public InventoryServiceClient inventoryServiceClient() {
+    public InventoryServiceClient inventoryServiceClient(InventoryServiceProperties properties) {
 
         var webClient = WebClient.builder()
-                .baseUrl("http://localhost:8011/")
+                .baseUrl(properties.getBaseUrl())
                 .build();
 
         var proxyFactory =
@@ -28,10 +32,10 @@ public class ServiceClientConfig {
     }
 
     @Bean
-    public PaymentServiceClient paymentServiceClient() {
+    public PaymentServiceClient paymentServiceClient(final PaymentServiceProperties properties) {
 
         var webClient = WebClient.builder()
-                .baseUrl("http://localhost:8012/")
+                .baseUrl(properties.getBaseUrl())
                 .build();
 
         var proxyFactory =
@@ -42,10 +46,10 @@ public class ServiceClientConfig {
     }
 
     @Bean
-    public ShipmentServiceClient shipmentServiceClient() {
+    public ShipmentServiceClient shipmentServiceClient(final ShipmentServiceProperties properties) {
 
         var webClient = WebClient.builder()
-                .baseUrl("http://localhost:8013/")
+                .baseUrl(properties.getBaseUrl())
                 .build();
 
         var proxyFactory =
@@ -56,10 +60,10 @@ public class ServiceClientConfig {
     }
 
     @Bean
-    public NotificationServiceClient notificationServiceClient() {
+    public NotificationServiceClient notificationServiceClient(final NotificationServiceProperties properties) {
 
         var webClient = WebClient.builder()
-                .baseUrl("http://localhost:8014/")
+                .baseUrl(properties.getBaseUrl())
                 .build();
 
         var proxyFactory =

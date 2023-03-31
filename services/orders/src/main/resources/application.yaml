@@ -12,3 +12,15 @@ management:
     health:
       probes:
         enabled: true
+
+inventory-service:
+  base-url: ${INVENTORY_SERVICE_BASE_URL}
+
+payment-service:
+  base-url: ${PAYMENT_SERVICE_BASE_URL}
+
+shipment-service:
+  base-url: ${SHIPMENT_SERVICE_BASE_URL}
+
+notification-service:
+  base-url: ${NOTIFICATION_SERVICE_BASE_URL}

@@ -15,14 +15,14 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class RouterConfig {
 
     @Bean
-    public RouterFunction<ServerResponse> orderRoutes(OrderHandler orderHandler) {
+    public RouterFunction<ServerResponse> orderRoutes(final OrderHandler orderHandler) {
         return route()
                 .POST("/api/v1/place-orders", RequestPredicates.contentType(MediaType.APPLICATION_JSON), orderHandler::placeOrder)
                 .build();
     }
 
     @Bean
-    public RouterFunction<ServerResponse> receiptRoutes(ReceiptHandler receiptHandler) {
+    public RouterFunction<ServerResponse> receiptRoutes(final ReceiptHandler receiptHandler) {
         return route()
                 .GET("/api/v1/receipts/{orderId}", receiptHandler::retrieveReceipt)
                 .build();

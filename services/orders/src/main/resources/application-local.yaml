@@ -1,2 +1,14 @@
 server:
   port: 8010
+
+inventory-service:
+  base-url: http://localhost:8011/
+
+payment-service:
+  base-url: http://localhost:8012/
+
+shipment-service:
+  base-url: http://localhost:8013/
+
+notification-service:
+  base-url: http://localhost:8014/
