@@ -1,9 +1,14 @@
 server:
   shutdown: graceful
-  port: 8011
 
 spring:
   main:
     banner-mode: off
   application:
     name: inventory-service
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
