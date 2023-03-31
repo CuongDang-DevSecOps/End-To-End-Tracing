@@ -1,0 +1,6 @@
+namespace: shipment
+appName: shipment-service
+
+image:
+  repository: cuongdangdevsecops/shipment-service
+  tag: <IMAGE_TAG>
