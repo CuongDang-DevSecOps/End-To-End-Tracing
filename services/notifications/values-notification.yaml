@@ -1,0 +1,6 @@
+namespace: notification
+appName: notification-service
+
+image:
+  repository: cuongdangdevsecops/notification-service
+  tag: <IMAGE_TAG>
