@@ -17,6 +17,7 @@ public class RouterConfig {
     public RouterFunction<ServerResponse> routes(PaymentHandler paymentHandler) {
         return route()
                 .POST("/api/v1/payments", RequestPredicates.contentType(MediaType.APPLICATION_JSON), paymentHandler::create)
+                .GET("/api/v1/payments/{orderId}", paymentHandler::get)
                 .build();
     }
 }

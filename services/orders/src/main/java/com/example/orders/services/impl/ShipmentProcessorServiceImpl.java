@@ -1,6 +1,7 @@
 package com.example.orders.services.impl;
 
 import com.example.orders.clients.ShipmentServiceClient;
+import com.example.orders.dtos.SSShippingDetailsDTO;
 import com.example.orders.dtos.SSShippingRequestDTO;
 import com.example.orders.dtos.SSShippingResultResponseDTO;
 import com.example.orders.services.ShipmentProcessorService;
@@ -17,5 +18,10 @@ public class ShipmentProcessorServiceImpl implements ShipmentProcessorService {
     @Override
     public Mono<SSShippingResultResponseDTO> ship(SSShippingRequestDTO requestDTO) {
         return shipmentServiceClient.proceedShipment(requestDTO);
+    }
+
+    @Override
+    public Mono<SSShippingDetailsDTO> retrieveDetails(String orderId) {
+        return shipmentServiceClient.retrieveShipmentDetails(orderId);
     }
 }

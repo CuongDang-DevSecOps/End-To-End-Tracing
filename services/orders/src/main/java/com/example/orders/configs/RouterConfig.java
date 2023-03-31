@@ -1,6 +1,7 @@
 package com.example.orders.configs;
 
 import com.example.orders.handlers.OrderHandler;
+import com.example.orders.handlers.ReceiptHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -14,9 +15,16 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class RouterConfig {
 
     @Bean
-    public RouterFunction<ServerResponse> routes(OrderHandler orderHandler) {
+    public RouterFunction<ServerResponse> orderRoutes(OrderHandler orderHandler) {
         return route()
                 .POST("/api/v1/place-orders", RequestPredicates.contentType(MediaType.APPLICATION_JSON), orderHandler::placeOrder)
+                .build();
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> receiptRoutes(ReceiptHandler receiptHandler) {
+        return route()
+                .GET("/api/v1/receipts/{orderId}", receiptHandler::retrieveReceipt)
                 .build();
     }
 }

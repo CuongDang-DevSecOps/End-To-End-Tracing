@@ -20,4 +20,13 @@ public record ShipmentHandler(ShipmentService shipmentService) {
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(BodyInserters.fromValue(shippingDTO)));
     }
+
+    public Mono<ServerResponse> get(ServerRequest serverRequest) {
+        return this.shipmentService.retrieveShipmentDetails(serverRequest.pathVariable("orderId"))
+                .flatMap(resultDTO -> ServerResponse
+                        .ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(BodyInserters.fromValue(resultDTO)))
+                .switchIfEmpty(ServerResponse.notFound().build());
+    }
 }

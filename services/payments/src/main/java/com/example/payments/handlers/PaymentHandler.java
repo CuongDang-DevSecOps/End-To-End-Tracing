@@ -20,4 +20,13 @@ public record PaymentHandler(PaymentService paymentService) {
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(BodyInserters.fromValue(chargingDTO)));
     }
+
+    public Mono<ServerResponse> get(ServerRequest serverRequest) {
+        return this.paymentService.retrievePaymentDetails(serverRequest.pathVariable("orderId"))
+                .flatMap(resultDTO -> ServerResponse
+                        .ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(BodyInserters.fromValue(resultDTO)))
+                .switchIfEmpty(ServerResponse.notFound().build());
+    }
 }

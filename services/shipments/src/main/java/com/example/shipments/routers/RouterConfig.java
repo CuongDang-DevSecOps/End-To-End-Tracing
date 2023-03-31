@@ -17,6 +17,7 @@ public class RouterConfig {
     public RouterFunction<ServerResponse> routes(ShipmentHandler shipmentHandler) {
         return route()
                 .POST("/api/v1/shipments", RequestPredicates.contentType(MediaType.APPLICATION_JSON), shipmentHandler::create)
+                .GET("/api/v1/shipments/{orderId}", shipmentHandler::get)
                 .build();
     }
 }

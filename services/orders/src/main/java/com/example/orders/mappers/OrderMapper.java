@@ -1,9 +1,6 @@
 package com.example.orders.mappers;
 
-import com.example.orders.dtos.ISOrderingResultResponseDTO;
-import com.example.orders.dtos.PSChargingResultResponseDTO;
-import com.example.orders.dtos.PlaceOrderResponseDTO;
-import com.example.orders.dtos.SSShippingResultResponseDTO;
+import com.example.orders.dtos.*;
 import com.example.orders.enums.PlaceOrderStatus;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -19,4 +16,14 @@ public interface OrderMapper {
                                                PSChargingResultResponseDTO paymentResult,
                                                SSShippingResultResponseDTO shipmentResult,
                                                PlaceOrderStatus status);
+
+    ReceiptResponseDTO.OrderDetails toOrderDetails(ISOrderDetailsDTO orderDetails);
+
+    ReceiptResponseDTO.PaymentDetails toPaymentDetails(PSPaymentDetailsDTO paymentDetails);
+
+    ReceiptResponseDTO.ShipmentDetails toShipmentDetails(SSShippingDetailsDTO shippingDetails);
+
+    ReceiptResponseDTO toReceiptResponse(ISOrderDetailsDTO order,
+                                         PSPaymentDetailsDTO payment,
+                                         SSShippingDetailsDTO shipment);
 }

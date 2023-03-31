@@ -29,6 +29,7 @@ public class OrderFacadeImpl implements OrderFacade {
         // 2. make payment
         // 3. create shipment
         // 4. notify purchase
+        // 5. fulfill result
         return orderProcessorService.order()
                 .flatMap(orderResult -> paymentProcessorService.pay(new PSChargingRequestDTO(orderResult.orderId()))
                         .flatMap(paymentResult -> shipmentProcessorService.ship(new SSShippingRequestDTO(paymentResult.transactionId()))

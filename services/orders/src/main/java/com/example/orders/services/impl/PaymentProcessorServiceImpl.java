@@ -3,6 +3,7 @@ package com.example.orders.services.impl;
 import com.example.orders.clients.PaymentServiceClient;
 import com.example.orders.dtos.PSChargingRequestDTO;
 import com.example.orders.dtos.PSChargingResultResponseDTO;
+import com.example.orders.dtos.PSPaymentDetailsDTO;
 import com.example.orders.services.PaymentProcessorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,5 +18,10 @@ public class PaymentProcessorServiceImpl implements PaymentProcessorService {
     @Override
     public Mono<PSChargingResultResponseDTO> pay(PSChargingRequestDTO requestDTO) {
         return paymentServiceClient.proceedPayment(requestDTO);
+    }
+
+    @Override
+    public Mono<PSPaymentDetailsDTO> retrieveDetails(String orderId) {
+        return paymentServiceClient.retrievePaymentDetails(orderId);
     }
 }
