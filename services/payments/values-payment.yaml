@@ -1,0 +1,6 @@
+namespace: payment
+appName: payment-service
+
+image:
+  repository: cuongdangdevsecops/payment-service
+  tag: <IMAGE_TAG>
