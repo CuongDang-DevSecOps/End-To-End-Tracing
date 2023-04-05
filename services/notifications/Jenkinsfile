@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Sonar Scannning') {
+            echo 'Sonar Scannning'
+        }
+
+        stage('Dependency Checking') {
+            echo 'Dependency Checking'
+        }
+
+        stage('Trivy Image Scanning') {
+            echo 'Trivy Image Scanning'
+        }
+    }
+}
